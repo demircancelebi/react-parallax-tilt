@@ -8,6 +8,7 @@ export type WrapperElement = {
   clientPosition: ClientPosition;
   updateAnimationId: number | null;
   scale: number;
+  transformOverride: string | null;
 };
 
 type DOMSupportedEvent = Event | MouseEvent<HTMLDivElement> | TouchEvent<HTMLDivElement> | DeviceOrientationEvent;

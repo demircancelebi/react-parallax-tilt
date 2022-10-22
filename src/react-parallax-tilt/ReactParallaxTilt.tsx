@@ -29,6 +29,7 @@ export class ReactParallaxTilt extends PureComponent<ReactParallaxTiltProps> {
     },
     updateAnimationId: null,
     scale: 1,
+    transformOverride: null,
   };
   private tilt: Tilt | null = null;
   private glare: Glare | null = null;
@@ -330,6 +331,7 @@ export class ReactParallaxTilt extends PureComponent<ReactParallaxTiltProps> {
     this.renderPerspective();
     this.tilt!.render(this.wrapperEl.node!);
     this.renderScale();
+    this.renderTransformOverride();
     if (this.glare) {
       this.glare.render(this.props);
     }
@@ -349,6 +351,12 @@ export class ReactParallaxTilt extends PureComponent<ReactParallaxTiltProps> {
     const { scale } = this.wrapperEl;
 
     this.wrapperEl.node!.style.transform += `scale3d(${scale},${scale},${scale})`;
+  }
+
+  private renderTransformOverride(): void {
+    const { transformOverride } = this.wrapperEl;
+
+    this.wrapperEl.node!.style.transform += ` ${transformOverride}`;
   }
 
   private setTransitions() {
